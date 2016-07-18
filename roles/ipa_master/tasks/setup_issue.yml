@@ -1,0 +1,2 @@
+  - name: setup /etc/issue
+    template: src=templates/{{ issue_template_file }} dest=/etc/issue owner=root group=wheel mode=0644

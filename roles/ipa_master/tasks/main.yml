@@ -1,0 +1,20 @@
+- name: Setup the MOTD for the IPA server
+  include:  setup_motd.yml
+  vars:
+    motd_template_file:  "motdtemplate.j2" 
+    motd_application_name: "IPA Server"
+
+- name: Setup the /etc/issue file for the IPA server
+  include:  setup_issue.yml
+  vars:
+    issue_template_file:  "issue.j2" 
+    issue_application_name: "IPA Server"
+
+- name: Setup the /etc/issue.net file for the IPA server
+  include:  setup_issue_net.yml
+  vars:
+    issue_net_template_file:  "issue.net.j2" 
+    issue_net_application_name: "IPA Server"
+
+- name: Create entropy on the IPA server
+  include:  setup_entropy.yml

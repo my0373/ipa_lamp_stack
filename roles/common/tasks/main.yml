@@ -1,0 +1,5 @@
+- name: Setup the ansible user and copy the SSH key over
+  include:  setup_user_with_key.yml
+  vars:
+    new_user_name: ansible  
+    new_user_public_file: "~/.ssh/id_rsa.pub"

@@ -1,0 +1,17 @@
+- name: Install the random number generator package
+  package: name=rng-tools  state=latest
+
+
+- name: Update the /usr/lib/systemd/system/rngd.service file
+  ini_file: dest=/usr/lib/systemd/system/rngd.service
+            section=service
+            option=ExecStart
+            value="/sbin/rngd -f -r /dev/urandom -o /dev/random"
+            backup=yes
+  notify: Enable the random number generator service
+
+- name: Enable the rngd service
+  service: name=rngd enabled=yes
+
+- name: Start the rngd service
+  service: name=rngd state=started

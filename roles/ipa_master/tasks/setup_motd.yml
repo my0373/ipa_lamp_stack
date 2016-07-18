@@ -1,0 +1,2 @@
+  - name: setup a MOTD
+    template: src=templates/{{ motd_template_file }} dest=/etc/motd owner=root group=wheel mode=0644

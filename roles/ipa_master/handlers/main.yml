@@ -1,0 +1,8 @@
+---
+# handlers file for ipa_master
+  - name: Enable the random number generator service
+    service: name=rngd enabled=yes state=restarted
+    notify: Trigger daemon-reload
+
+  - name: Trigger daemon-reload
+    shell: /usr/bin/systemctl daemon-reload

@@ -1,0 +1,21 @@
+# This playbook deploys the whole application stack in this site.  
+
+- name: apply common configuration to all nodes
+  hosts: ipa
+  user: myork
+  become: yes
+  become_user: root
+
+
+  roles:
+    - common
+
+- name: setup IPA service on the IPA node
+  hosts: ipa
+  user: ansible
+  become: yes
+  become_user: root
+
+
+  roles:
+    - ipa_master

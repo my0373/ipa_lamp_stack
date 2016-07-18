@@ -1,0 +1,9 @@
+- name: Installing SELinux management module on Fedora, CentOS and Red Hat systems
+  package: name=libselinux-python state=latest
+  when: ansible_os_family == "RedHat"
+
+- name: Creating user "{{ new_user_name }}"
+  user: name="{{ new_user_name }}" comment="User {{ new_user_name }} created automagically by Ansible." group=wheel
+
+- name: Placing key
+  authorized_key: user="{{ new_user_name }}" key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
